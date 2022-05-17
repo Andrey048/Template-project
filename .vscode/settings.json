@@ -1,0 +1,8 @@
+{
+   "files.autoSave": "afterDelay",
+   "vscodeGoogleTranslate.preferredLanguage": "English",
+   "workbench.colorTheme": "Material Theme High Contrast",
+   "workbench.iconTheme": "eq-material-theme-icons",
+   "editor.hover.enabled": false,
+   "editor.formatOnSave": true
+}
