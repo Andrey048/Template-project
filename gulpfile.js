@@ -36,6 +36,7 @@ const styles = () => {
   return gulp.src("source/scss/style.scss")
     .pipe(plumber())
     .pipe(sass())
+    .on('error', catchErr)
     .pipe(postcss([
       autoprefixer(),
     ]))
@@ -45,6 +46,10 @@ const styles = () => {
     .pipe(sync.stream());
 }
 exports.styles = styles;
+function catchErr(e) {
+   console.log(e);
+   this.emit('end');
+}
 
 
 const html = () => {
