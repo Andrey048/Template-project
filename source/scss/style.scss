@@ -1,0 +1,44 @@
+@import "reset.scss";
+
+
+$container-padding: px;
+$container-width: px;
+
+$max-width-tablet: 768px;
+$max-width-mobile: 425px;
+
+$ppi-min-resolution: 1.5dppx;
+
+
+._container {
+   max-width: $container-width;
+   padding: 0 $container-padding;
+   margin: 0 auto;
+}
+._visually-hidden {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+   border: 0;
+   padding: 0;
+   white-space: nowrap;
+   clip-path: inset(100%);
+   clip: rect(0 0 0 0);
+   overflow: hidden;
+}
+
+
+body {
+   display: flex;
+   flex-direction: column;
+
+   .page {
+      flex: 1 1 auto;
+   }
+}
+
+
+@import "ui.scss";
+@import "blocks/header.scss";
+@import "blocks/footer.scss";
