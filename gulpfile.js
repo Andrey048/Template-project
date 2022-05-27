@@ -9,8 +9,12 @@ const rename = require("gulp-rename");
 const imagemin = require("gulp-imagemin");
 const svgstore = require("gulp-svgstore");
 const webp = require("gulp-webp");
+const webphtml = require("gulp-webp-html-nosvg");
 const del = require("del");
 const fileinclude = require('gulp-file-include');
+const htmlmin = require('gulp-htmlmin');
+const fonter = require('gulp-fonter');
+const ttf2woff2 = require('gulp-ttf2woff2');
 
 
 
@@ -46,6 +50,7 @@ const styles = () => {
     .pipe(sync.stream());
 }
 exports.styles = styles;
+
 function catchErr(e) {
    console.log(e);
    this.emit('end');
@@ -58,6 +63,8 @@ const html = () => {
          prefix: '@@',
          basepath: '@file'
          }))
+      .pipe(webphtml())
+      .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(gulp.dest("build/"))
       .pipe(sync.stream());
 }
@@ -71,6 +78,8 @@ const images = () => {
          imagemin.mozjpeg({progressive: true}),
          imagemin.svgo(),
          ]))
+      .pipe(gulp.dest("build/img"))
+
 }
 exports.images = images;
 
@@ -80,11 +89,11 @@ const createWebp = () => {
       .pipe(webp({quality: 90}))
       .pipe(gulp.dest("source/img"))
 }
-exports.webp = createWebp;
+exports.createWebp = createWebp;
 
 
 const sprite = () => {
-   return gulp.src("source/img/**/icon-*.svg")
+   return gulp.src("source/img/**/*.svg")
       .pipe(svgstore())
       .pipe(rename("sprite.svg"))
       .pipe(gulp.dest("build/img"))
@@ -92,14 +101,24 @@ const sprite = () => {
 exports.sprite = sprite
 
 
-const build = gulp.series(
-   clean,
-   copy,
-   styles,
-   sprite,
-   html,
-  );
-exports.build = build;
+const fonts = () => {
+   return gulp.src("source/fonts/**/*.otf")
+      .pipe(fonter({
+         formats: ['ttf']
+      }))
+      .pipe(gulp.dest('build/fonts'))
+
+      .pipe(gulp.src("source/fonts/**/*.ttf"))
+      .pipe(fonter({
+         formats: ['woff']
+      }))
+      .pipe(gulp.dest('build/fonts'))
+
+      .pipe(gulp.src("source/fonts/**/*.ttf"))
+      .pipe(ttf2woff2())
+      .pipe(gulp.dest('build/fonts'));
+}
+exports.fonts = fonts;
 
 
 const server = (done) => {
@@ -122,7 +141,26 @@ const watcher = () => {
 }
 
 
+const build = gulp.series(
+   clean,
+   copy,
+   styles,
+   html,
+   server,
+   watcher,
+  );
+exports.build = build;
+
 
 exports.default = gulp.series(
-  build, images, createWebp, server, watcher
+  clean,
+  copy,
+  styles,
+  // sprite,
+  html,
+  fonts,
+  images,
+  createWebp,
+  server,
+  watcher,
 );
