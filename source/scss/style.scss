@@ -1,9 +1,12 @@
 @import "reset.scss";
+@import "fonts.scss";
 
 
 $container-padding: px;
 $container-width: px;
+$min-container-width: px;
 
+$max-width-laptop: 980px;
 $max-width-tablet: 768px;
 $max-width-mobile: 425px;
 
@@ -12,6 +15,7 @@ $ppi-min-resolution: 1.5dppx;
 
 ._container {
    max-width: $container-width;
+   min-width: $min-container-width;
    padding: 0 $container-padding;
    margin: 0 auto;
 }
@@ -29,6 +33,9 @@ $ppi-min-resolution: 1.5dppx;
 }
 
 
+* {
+   font-family: Arial, sans-serif;
+}
 body {
    display: flex;
    flex-direction: column;
@@ -36,6 +43,10 @@ body {
    .page {
       flex: 1 1 auto;
    }
+}
+img, svg {
+   width: 100%;
+   height: 100%;
 }
 
 
