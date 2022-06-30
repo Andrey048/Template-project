@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
    @@include('html/head.html', {
-      'title':'Главная'
+      'title':'Главная',
+      'styles-url':'css/index-styles.min.css',
    })
    <body>
-      @@include('html/pp-panel.html')
       <!-- @@include('img/sprite.svg') -->
-      @@include('html/header.html')
-      <main>
+      @@include('html/header.html', { "page": "index" })
+      <main class="main">
          Я контент
+         <img src="img/tests/test.jpg" alt="">
       </main>
       @@include('html/footer.html')
-      <script src="../js/scripts.js"></script>
+
+      <script src="../js/scripts-min.js"></script>
    </body>
 </html>

@@ -59,4 +59,29 @@
 		],
 		"description": ""
 	},
+
+   "Тэг формы": {
+		"prefix": "fm",
+		"body": [
+			"<",
+         "  font-family: '$1';",
+         "  font-weight: '400';",
+         "  src: url(WebFont.woff2) format('woff2'),",
+         "       url(WebFont.woff) format('woff'),",
+         "       url(WebFont.ttf) format('truetype'),",
+         "       url(WebFont.otf) format('OpenType');",
+         "}"
+		],
+		"description": ""
+	},
+
+   "SVG спрайт": {
+		"prefix": "svgs",
+		"body": [
+			"<svg class='$1' width='' height='' fill=''>",
+         "  <use xlink:href='#$2'/>",
+         "</svg>"
+		],
+		"description": ""
+	},
 }
