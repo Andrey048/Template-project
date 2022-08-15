@@ -1,0 +1,98 @@
+{
+   // ******SCSS снипеты******
+   "Медиа запрос для лэптопного разрешения": {
+		"prefix": "bml",
+		"body": [
+			"@media (max-width: \\$max-width-laptop) {$2}"
+		],
+      "scope": "scss"
+	},
+   "Медиа запрос для планшетного разрешения": {
+		"prefix": "bmt",
+		"body": [
+			"@media (max-width: \\$max-width-tablet) {$2}"
+		],
+      "scope": "scss"
+
+	},
+   "Медиа запрос для мобильного разрешения": {
+		"prefix": "bmm",
+		"body": [
+			"@media (max-width: \\$max-width-mobile) {$2}"
+		],
+      "scope": "scss"
+
+	},
+
+
+
+   // ******SCSS и css снипеты******
+   "Сокращённое свойство background": {
+		"prefix": "bgs",
+		"body": [
+			"background:url($1) 0 0/cover no-repeat;"
+		],
+      "scope": ["scss", "css"],
+	},
+   "Font face": {
+		"prefix": "ffc",
+		"body": [
+			"@font-face {",
+         "\tfont-family: '${1:foo}';",
+         "\tfont-weight: '400';",
+         "\tsrc: url(WebFont.woff2) format('woff2'),",
+         "\t\turl(WebFont.woff) format('woff'),",
+         "\t\turl(WebFont.ttf) format('truetype'),",
+         "\t\turl(WebFont.otf) format('OpenType');",
+         "}"
+		],
+      "scope": ["scss", "css"],
+	},
+   "adaptive-value": {
+		"prefix": "av",
+		"body": [
+			"@include adaptive-value(\\$property:$1, \\$value:$2);"
+		],
+      "scope": ["scss", "css"],
+	},
+
+
+
+   // ******HTML снипеты******
+   "SVG спрайт": {
+		"prefix": "svgs",
+		"body": [
+			"<svg class='$1' width='' height='' fill=''>",
+         "\t<use xlink:href='#$2'/>",
+         "</svg>"
+		],
+      "scope": "html",
+	},
+
+
+
+   // ******JS снипеты******
+   "Слушатель с событием клик": {
+		"prefix": "evtc",
+		"body": [
+			".addEventListener('click', evt => {",
+         "\tevt.preventDefault();",
+         "})"
+		],
+      "scope": "javascript",
+	},
+   "querySelector": {
+		"prefix": "qs",
+		"body": [
+			"document.querySelector('$1')",
+		],
+      "scope": "javascript",
+	},
+   "Print to console": {
+   "prefix": "log",
+   "body": [
+      "console.log($1);",
+   ],
+   "scope": "javascript",
+	}
+}

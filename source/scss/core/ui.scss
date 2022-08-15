@@ -1,0 +1,35 @@
+// ###### Миксины ######
+
+@mixin reset-margin {
+   & > *:last-child {
+      margin-bottom: 0 !important;
+   }
+}
+
+@mixin adaptive-value($property, $start-size, $min-size) {
+   // Прописать ниже значения без пикселей
+   $max-width-container: 1210; //Максимальная ширина ограничивающего контейнера с боковыми отсутпами
+   $min-width-content: 375; //Минимальная ширина экрана, на которой нужно отключать уменьшение значения
+
+
+   $difference-size: $start-size - $min-size;
+   $difference-width-container: $max-width-container - $min-width-content;
+
+   #{$property}: #{$start-size + px};
+
+   @media (max-width: #{$max-width-container + px}) and (min-width: #{$min-width-content + px}) {
+      #{$property}: calc(#{$min-size + px} + #{$difference-size} * ((100vw - #{$min-width-content + px}) / #{$difference-width-container}));
+   }
+   @media (max-width: #{$min-width-content + px}) {
+      #{$property}: #{$min-size + px};
+   }
+}
+// ###### / Миксины ######
+
+
+
+// ###### Переиспользуемые БЭМ блоки ######
+
+
+
+// ###### / Переиспользуемые БЭМ блоки ######

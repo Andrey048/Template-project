@@ -1,0 +1,77 @@
+@import "normalize.scss";
+@import "reset.scss";
+@import "fonts.scss";
+
+
+
+// ###### Переменные ######
+$container-padding: 0px;
+$container-width: 0px;
+// $min-width-content: 0px;
+// $max-width-content: 0px;
+
+$max-width-laptop: 981px;
+$max-width-tablet: 769px;
+$max-width-mobile: 426px;
+
+// $ppi-min-resolution: 1.5dppx;
+
+// ###### / Переменные ######
+
+
+
+// ###### Технические классы ######
+
+._container {
+   max-width: $container-width + $container-padding * 2;
+   margin: 0 auto;
+   padding: 0 $container-padding;
+}
+._visually-hidden {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+   border: 0;
+   padding: 0;
+   white-space: nowrap;
+   clip-path: inset(100%);
+   clip: rect(0 0 0 0);
+   overflow: hidden;
+}
+._hidden {
+   display: none !important;
+}
+
+// ###### / Технические классы ######
+
+
+
+// ###### Общие стили ######
+
+body {
+   display: flex;
+   flex-direction: column;
+
+   // min-width: $min-width-content;
+
+   .main {
+      flex: 1 1 auto;
+   }
+   &.body-lock {
+      overflow: hidden;
+   }
+}
+img, svg {
+   max-width: 100%;
+   max-height: 100%;
+}
+a {
+   color: inherit;
+}
+
+// ###### / Общие стили ######
+
+
+
+@import "ui.scss";
