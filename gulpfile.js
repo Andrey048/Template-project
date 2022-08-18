@@ -14,10 +14,11 @@ import {styles} from "./gulp/tasks/styles.js";
 import {html} from "./gulp/tasks/html.js";
 import {js} from "./gulp/tasks/js.js";
 import {optiImages, createWebp} from "./gulp/tasks/images.js";
-import {convertFonts} from "./gulp/tasks/fonts.js";
+import {toWoff, toWoff2} from "./gulp/tasks/fonts.js";
 import {server} from "./gulp/tasks/server.js";
 
 const images = gulp.series(optiImages, createWebp);
+const convertFonts = gulp.series(toWoff, toWoff2);
 
 const watcher = () => {
    gulp.watch(app.path.watch.scss, gulp.series(styles));
@@ -29,5 +30,7 @@ const build = gulp.series(clean, copy, html, styles, js, images, convertFonts);
 const dev = gulp.series(build, server, watcher);
 
 export {build};
+
+// export const test = gulp.series(clean, )
 
 gulp.task('default', dev);
