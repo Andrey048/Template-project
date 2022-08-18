@@ -3,6 +3,7 @@
    font-weight: 400;
    font-display: swap;
    src:
+      url(../fonts/font-name.woff2) format('woff2'),
       url(../fonts/font-name.woff) format('woff'),
       url(../fonts/font-name.ttf) format('truetype'),
 }

@@ -5,18 +5,18 @@ import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import csso from 'gulp-csso';
 
-const sass = gulpSass(dartSass)
+const sass = gulpSass(dartSass);
 
 export const styles = () => {
    return app.gulp.src(app.path.src.scss)
-     .pipe(sass())
-     .pipe(postcss([
-         autoprefixer(),
-     ]))
-     .pipe(csso())
-     .pipe(rename(pathFile => {
-         pathFile.basename += ".min";
-     }))
-     .pipe(app.gulp.dest(app.path.build.css))
-     .pipe(app.sync.stream());
-}
+   .pipe(sass())
+   .pipe(postcss([
+      autoprefixer(),
+   ]))
+   .pipe(csso())
+   .pipe(rename(pathFile => {
+      pathFile.basename += ".min";
+   }))
+   .pipe(app.gulp.dest(app.path.build.css))
+   .pipe(app.sync.stream());
+};

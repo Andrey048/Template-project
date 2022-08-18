@@ -1,5 +1,5 @@
-const buildFolder = `./docs`
-const srcFolder = `./source`
+const buildFolder = `./docs`;
+const srcFolder = `./source`;
 
 export const path = {
    build: {
@@ -25,4 +25,4 @@ export const path = {
       html: `${srcFolder}/**/*.html`,
    },
    clean: buildFolder,
-}
+};

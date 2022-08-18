@@ -6,7 +6,7 @@ global.app = {
    gulp: gulp,
    sync: sync,
    path: path,
-}
+};
 
 import {copy} from "./gulp/tasks/copy.js";
 import {clean} from "./gulp/tasks/clean.js";
@@ -24,13 +24,13 @@ const watcher = () => {
    gulp.watch(app.path.watch.scss, gulp.series(styles));
    gulp.watch(app.path.watch.html, gulp.series(html)).on("change", app.sync.reload);
    gulp.watch(app.path.watch.js, gulp.series(js));
-}
+};
 
 const build = gulp.series(clean, copy, html, styles, js, images, convertFonts);
 const dev = gulp.series(build, server, watcher);
 
 export {build};
 
-// export const test = gulp.series(clean, )
+// export const test = gulp.series(clean, );
 
 gulp.task('default', dev);
